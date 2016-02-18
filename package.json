@@ -1,0 +1,19 @@
+{
+  "name": "fit-badge",
+  "version": "1.0.6",
+  "description": "会标数",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://gitlab.baidu.com/tb-component/badge.git"
+  },
+  "keywords": [
+    "react",
+    "fit"
+  ],
+  "author": "tieba",
+  "license": "ISC"
+}
