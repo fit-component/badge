@@ -1,6 +1,6 @@
 {
   "name": "fit-badge",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "会标数",
   "main": "lib/index.js",
   "scripts": {
