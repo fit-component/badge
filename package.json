@@ -1,7 +1,7 @@
 {
   "name": "fit-badge",
   "version": "1.0.26",
-  "description": "会标数",
+  "description": "徽标数",
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

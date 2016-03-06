@@ -1,8 +1,7 @@
+# 徽标数
+---
 
-            # 徽标数
-            ---
-
-            ````jsx
-            npm install fit-badge
-            ````
+````jsx
+npm install fit-badge
+````
             
