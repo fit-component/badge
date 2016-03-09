@@ -16,5 +16,7 @@
   ],
   "author": "tieba",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "react": "^0.14.7"
+  }
 }
