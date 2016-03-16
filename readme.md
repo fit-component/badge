@@ -4,4 +4,3 @@
 ````jsx
 npm install fit-badge
 ````
-            

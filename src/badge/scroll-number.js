@@ -92,7 +92,7 @@ export default class ScrollNumber extends React.Component {
 
     render() {
         const props = Object.assign({}, this.props, {
-            className: `${this.props.className}`
+            className: `scroll-number ${this.props.className}`
         })
 
         const isBrowser = (typeof document !== 'undefined' && typeof window !== 'undefined')
