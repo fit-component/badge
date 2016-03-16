@@ -1,6 +1,6 @@
 {
   "name": "fit-badge",
-  "version": "1.0.28",
+  "version": "1.0.29",
   "description": "徽标数",
   "main": "lib/index.js",
   "scripts": {
@@ -17,6 +17,9 @@
   "author": "tieba",
   "license": "ISC",
   "dependencies": {
-    "react": "^0.14.7"
+    "react": "^0.14.7",
+    "rc-animate": "^2.0.3",
+    "classnames": "^2.2.1",
+    "css-animation": "^1.1.1"
   }
 }
