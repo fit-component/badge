@@ -2,55 +2,53 @@ import React from 'react'
 import Animate from 'rc-animate'
 import ScrollNumber from './scroll-number'
 import classNames from 'classnames'
+import './index.scss'
 
-class AntBadge extends React.Component {
+export default class Badge extends React.Component {
     render() {
-        let { count, prefixCls, overflowCount, className, style, children } = this.props
-        const dot = this.props.dot
+        const { count, overflowCount, className, style, dot, children, ...others } = this.props
 
-        count = count > overflowCount ? `${overflowCount}+` : count
+        let countAfterCalculation = count > overflowCount ? `${overflowCount}+` : count
 
-        // dot mode don't need count
+        // dot 不展示 count
         if (dot) {
-            count = ''
+            countAfterCalculation = ''
         }
 
         // null undefined "" "0" 0
-        const hidden = (!count || count === '0') && !dot
-        const scrollNumberCls = prefixCls + (dot ? '-dot' : '-count')
-        const badgeCls = classNames({
-            [className]: !!className,
-            [prefixCls]: true,
-            [`${prefixCls}-not-a-wrapper`]: !children
+        const hidden = (!countAfterCalculation || countAfterCalculation === '0') && !dot
+        const scrollNumberCls = (dot ? 'dot' : 'count')
+
+        const classes = classNames({
+            '_namespace'     : true,
+            [className]      : className,
+            [`not-a-wrapper`]: !children
         })
 
         return (
-            <span className={badgeCls}
-                  title={count} {...this.props}
-                  style={null}>
-        {children}
-                <Animate component=""
-                         showProp="data-show"
-                         transitionName={`${prefixCls}-zoom`}
+            <span {...others} className={classes}
+                              title={countAfterCalculation}>
+                {children}
+                <Animate showProp="data-show"
+                         transitionName={`zoom`}
                          transitionAppear>
-                    {
-                        hidden ? null :
-                            <ScrollNumber data-show={!hidden}
-                                          className={scrollNumberCls}
-                                          count={count}
-                                          style={style}/>
+                    {hidden ? null :
+                        <ScrollNumber data-show={!hidden}
+                                      className={scrollNumberCls}
+                                      count={countAfterCalculation}
+                                      style={style}/>
                     }
                 </Animate>
-      </span>
+            </span>
         )
     }
 }
 
-AntBadge.defaultProps = {
-    prefixCls: 'ant-badge',
-    count: null,
-    dot: false,
+Badge.defaultProps = {
+    // @desc 展示的数字,为0时候则隐藏
+    count        : 0,
+    // @desc 是否不展示数字,只显示小红点
+    dot          : false,
+    // @desc 封顶数字
     overflowCount: 99
 }
-
-export default AntBadge

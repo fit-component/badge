@@ -12,7 +12,7 @@ const boxStyle = {
 export default class Demo extends React.Component {
     render() {
         return (
-            <Badge count={5}>
+            <Badge count={100}>
                 <div style={boxStyle}></div>
             </Badge>
         )

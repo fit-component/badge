@@ -1,14 +1,4 @@
-import React from 'react'
+import Badge from './badge'
 
-export default class Badge extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {}
-    }
-
-    render() {
-        <div>badge</div>
-    }
-}
-
-Badge.defaultProps = {}
+export default Badge
+export { Badge }

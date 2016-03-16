@@ -1,17 +1,17 @@
 import React, { createElement } from 'react'
 import { isCssAnimationSupported } from 'css-animation'
 
-const getNumberArray=(num) =>{
+const getNumberArray = (num) => {
     return num ?
         num.toString().split('').reverse().map(i => Number(i)) : []
 }
 
-class AntScrollNumber extends React.Component {
+export default class ScrollNumber extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             animateStarted: true,
-            count: props.count
+            count         : props.count
         }
     }
 
@@ -49,7 +49,7 @@ class AntScrollNumber extends React.Component {
                 setTimeout(() => {
                     this.setState({
                         animateStarted: false,
-                        count: nextProps.count
+                        count         : nextProps.count
                     }, () => {
                         this.props.onAnimated()
                     })
@@ -69,33 +69,30 @@ class AntScrollNumber extends React.Component {
     renderCurrentNumber(num, i) {
         const position = this.getPositionByNum(num, i)
         const height = this.props.height
-        const removeTransition = this.state.animateStarted ||
-            (getNumberArray(this.lastCount)[i] === undefined)
+        const removeTransition = this.state.animateStarted || (getNumberArray(this.lastCount)[i] === undefined)
 
         return createElement('span', {
-            className: `${this.props.prefixCls}-only`,
-            style: {
-                transition: removeTransition && 'none',
+            className: `only`,
+            style    : {
+                transition     : removeTransition && 'none',
                 WebkitTransform: `translate3d(0, ${-position * height}px, 0)`,
-                transform: `translate3d(0, ${-position * height}px, 0)`,
+                transform      : `translate3d(0, ${-position * height}px, 0)`,
                 height
             },
-            key: i
+            key      : i
         }, this.renderNumberList())
     }
 
     renderNumberElement() {
-        const state = this.state;
-        if (!state.count || isNaN(statecount)) {
-            return state.count
+        if (!this.state.count || isNaN(this.state.count)) {
+            return this.state.count
         }
-        return getNumberArray(state.count)
-            .map((num, i) => this.renderCurrentNumber(num, i)).reverse()
+        return getNumberArray(this.state.count).map((num, i) => this.renderCurrentNumber(num, i)).reverse()
     }
 
     render() {
         const props = Object.assign({}, this.props, {
-            className: `${this.props.prefixCls} ${this.props.className}`
+            className: `${this.props.className}`
         })
 
         const isBrowser = (typeof document !== 'undefined' && typeof window !== 'undefined')
@@ -116,12 +113,10 @@ class AntScrollNumber extends React.Component {
     }
 }
 
-AntScrollNumber.defaultProps = {
-    prefixCls: 'ant-scroll-number',
-    count: null,
-    component: 'sup',
-    onAnimated() {},
-    height: 18
+ScrollNumber.defaultProps = {
+    count     : null,
+    component : 'sup',
+    onAnimated: ()=> {
+    },
+    height    : 18
 }
-
-export default AntScrollNumber
