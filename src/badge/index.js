@@ -10,7 +10,7 @@ export default class Badge extends React.Component {
 
         let countAfterCalculation = count > overflowCount ? `${overflowCount}+` : count
 
-        // dot 不展示 count56777
+        // dot 不展示 count5677722
         if (dot) {
             countAfterCalculation = ''
         }
