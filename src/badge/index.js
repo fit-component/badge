@@ -6,7 +6,7 @@ import './index.scss'
 
 export default class Badge extends React.Component {
     render() {
-        const { count, overflowCount, className, style, dot, children, ...others } = this.props
+        const {count, overflowCount, className, style, dot, children, ...others} = this.props
 
         let countAfterCalculation = count > overflowCount ? `${overflowCount}+` : count
 
