@@ -1,0 +1,10 @@
+.scroll-number {
+    .only {
+        display: inline-block;
+        transition: transform .3s $ease-in-out;
+    }
+
+    p {
+        margin: 0;
+    }
+}

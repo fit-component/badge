@@ -1,17 +1,24 @@
-import React, { createElement } from 'react'
-import { isCssAnimationSupported } from 'css-animation'
+/// <reference path="../../../../../typings-module/css-animation.d.ts" />
+
+import * as React from 'react'
+import {isCssAnimationSupported} from 'css-animation'
+import {others} from '../../../../common/transmit-transparently/src'
+import * as module from './module'
 
 const getNumberArray = (num) => {
-    return num ?
-        num.toString().split('').reverse().map(i => Number(i)) : []
+    return num ? num.toString().split('').reverse().map(i => Number(i)) : []
 }
 
-export default class ScrollNumber extends React.Component {
+export default class ScrollNumber extends React.Component <module.PropsInterface,module.StateInterface> {
+    static defaultProps = new module.Props()
+    public state = new module.State()
+    private lastCount:number
+
     constructor(props) {
         super(props)
         this.state = {
             animateStarted: true,
-            count         : props.count
+            count: props.count
         }
     }
 
@@ -49,7 +56,7 @@ export default class ScrollNumber extends React.Component {
                 setTimeout(() => {
                     this.setState({
                         animateStarted: false,
-                        count         : nextProps.count
+                        count: nextProps.count
                     }, () => {
                         this.props.onAnimated()
                     })
@@ -71,15 +78,15 @@ export default class ScrollNumber extends React.Component {
         const height = this.props.height
         const removeTransition = this.state.animateStarted || (getNumberArray(this.lastCount)[i] === undefined)
 
-        return createElement('span', {
+        return React.createElement('span', {
             className: `only`,
-            style    : {
-                transition     : removeTransition && 'none',
+            style: {
+                transition: removeTransition && 'none',
                 WebkitTransform: `translate3d(0, ${-position * height}px, 0)`,
-                transform      : `translate3d(0, ${-position * height}px, 0)`,
+                transform: `translate3d(0, ${-position * height}px, 0)`,
                 height
             },
-            key      : i
+            key: i
         }, this.renderNumberList())
     }
 
@@ -92,31 +99,23 @@ export default class ScrollNumber extends React.Component {
 
     render() {
         const props = Object.assign({}, this.props, {
-            className: `scroll-number ${this.props.className}`
+            className: `scroll-number ${this.props['className']}`
         })
 
         const isBrowser = (typeof document !== 'undefined' && typeof window !== 'undefined')
 
         if (isBrowser && isCssAnimationSupported) {
-            return createElement(
+            return React.createElement(
                 this.props.component,
                 props,
                 this.renderNumberElement()
             )
         }
 
-        return createElement(
+        return React.createElement(
             this.props.component,
             props,
             props.count
         )
     }
-}
-
-ScrollNumber.defaultProps = {
-    count     : null,
-    component : 'sup',
-    onAnimated: ()=> {
-    },
-    height    : 18
 }

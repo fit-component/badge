@@ -6,17 +6,6 @@
     line-height: 1;
     vertical-align: middle;
 
-    .scroll-number {
-        .only {
-            display: inline-block;
-            transition: transform .3s $ease-in-out;
-        }
-
-        p {
-            margin: 0;
-        }
-    }
-
     .count {
         overflow: hidden;
         position: absolute;
