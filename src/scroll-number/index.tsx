@@ -3,9 +3,10 @@
 import * as React from 'react'
 import {isCssAnimationSupported} from 'css-animation'
 import {others} from '../../../../common/transmit-transparently/src'
+import * as _ from 'lodash'
 import * as module from './module'
 
-const getNumberArray = (num) => {
+const getNumberArray = (num:number) => {
     return num ? num.toString().split('').reverse().map(i => Number(i)) : []
 }
 
@@ -14,7 +15,7 @@ export default class ScrollNumber extends React.Component <module.PropsInterface
     public state = new module.State()
     private lastCount:number
 
-    constructor(props) {
+    constructor(props:any) {
         super(props)
         this.state = {
             animateStarted: true,
@@ -22,7 +23,7 @@ export default class ScrollNumber extends React.Component <module.PropsInterface
         }
     }
 
-    getPositionByNum(num, i) {
+    getPositionByNum(num:number, i:number) {
         if (this.state.animateStarted) {
             return 10 + num
         }
@@ -41,7 +42,7 @@ export default class ScrollNumber extends React.Component <module.PropsInterface
         return num
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps:module.PropsInterface) {
         if ('count' in nextProps) {
             if (this.state.count === nextProps.count) {
                 return
@@ -66,14 +67,14 @@ export default class ScrollNumber extends React.Component <module.PropsInterface
     }
 
     renderNumberList() {
-        const childrenToReturn = []
+        const childrenToReturn:any = []
         for (let i = 0; i < 30; i++) {
             childrenToReturn.push(<p key={i}>{i % 10}</p>)
         }
         return childrenToReturn
     }
 
-    renderCurrentNumber(num, i) {
+    renderCurrentNumber(num:number, i:number) {
         const position = this.getPositionByNum(num, i)
         const height = this.props.height
         const removeTransition = this.state.animateStarted || (getNumberArray(this.lastCount)[i] === undefined)
@@ -90,7 +91,7 @@ export default class ScrollNumber extends React.Component <module.PropsInterface
         }, this.renderNumberList())
     }
 
-    renderNumberElement() {
+    renderNumberElement():any {
         if (!this.state.count || isNaN(this.state.count)) {
             return this.state.count
         }
@@ -98,7 +99,7 @@ export default class ScrollNumber extends React.Component <module.PropsInterface
     }
 
     render() {
-        const props = Object.assign({}, this.props, {
+        const props:any = _.assign({}, this.props, {
             className: `scroll-number ${this.props['className']}`
         })
 
@@ -115,7 +116,7 @@ export default class ScrollNumber extends React.Component <module.PropsInterface
         return React.createElement(
             this.props.component,
             props,
-            props.count
+            props['count']
         )
     }
 }

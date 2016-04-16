@@ -23,7 +23,7 @@ export interface PropsInterface {
 }
 
 export class Props implements PropsInterface {
-    count = null
+    count = 0
     component = 'sup'
     onAnimated = ()=> {
     }
