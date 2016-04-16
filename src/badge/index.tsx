@@ -31,8 +31,8 @@ export default class Badge extends React.Component<module.PropsInterface,module.
         })
 
         return (
-            <span {...others(new module.Props(), this.props)} className={classes}
-                                                              title={countAfterCalculation}>
+            <span className={classes}
+                  title={countAfterCalculation}>
                 {this.props.children}
                 <Animate showProp="data-show"
                          transitionName={`zoom`}
@@ -41,7 +41,7 @@ export default class Badge extends React.Component<module.PropsInterface,module.
                     <ScrollNumber data-show={!hidden}
                                   className={scrollNumberCls}
                                   count={countAfterCalculation}
-                                  style={this.props['style']}/>
+                        {...others(new module.Props(), this.props)}/>
                         }
                 </Animate>
             </span>
