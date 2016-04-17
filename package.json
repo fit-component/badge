@@ -1,6 +1,6 @@
 {
   "name": "fit-badge",
-  "version": "2.0.44",
+  "version": "2.0.45",
   "description": "徽标数",
   "main": "lib/index.js",
   "scripts": {
@@ -20,7 +20,7 @@
     "react": "^0.14.7",
     "rc-animate": "^2.0.3",
     "classnames": "^2.2.1",
-    "fit-transmit-transparently": "^2.0.79",
+    "fit-transmit-transparently": "^2.0.80",
     "css-animation": "^1.1.1",
     "lodash": "^3.10.1"
   }
