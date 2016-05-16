@@ -1,6 +1,6 @@
 @import "../../../../../style/mixins";
 
-.scroll-number {
+&.scroll-number {
     .only {
         display: inline-block;
         transition: transform .3s $ease-in-out;

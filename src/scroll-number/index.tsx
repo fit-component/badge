@@ -5,6 +5,7 @@ import {isCssAnimationSupported} from 'css-animation'
 import {others} from '../../../../common/transmit-transparently/src'
 import * as _ from 'lodash'
 import * as module from './module'
+import './index.scss'
 
 const getNumberArray = (num:number) => {
     return num ? num.toString().split('').reverse().map(i => Number(i)) : []
@@ -100,7 +101,7 @@ export default class ScrollNumber extends React.Component <module.PropsInterface
 
     render() {
         const props:any = _.assign({}, this.props, {
-            className: `scroll-number ${this.props['className']}`
+            className: `scroll-number ${this.props['className']} _namespace`
         })
 
         const isBrowser = (typeof document !== 'undefined' && typeof window !== 'undefined')
