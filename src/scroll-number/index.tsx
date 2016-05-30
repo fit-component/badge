@@ -2,7 +2,6 @@
 
 import * as React from 'react'
 import {isCssAnimationSupported} from 'css-animation'
-import {others} from '../../../../common/transmit-transparently/src'
 import * as _ from 'lodash'
 import * as module from './module'
 import './index.scss'
