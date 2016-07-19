@@ -4,6 +4,7 @@ import * as React from 'react'
 import {isCssAnimationSupported} from 'css-animation'
 import * as _ from 'lodash'
 import * as module from './module'
+import {others} from '../../../../common/transmit-transparently/src'
 import './index.scss'
 
 const getNumberArray = (num:number) => {
@@ -104,18 +105,19 @@ export default class ScrollNumber extends React.Component <module.PropsInterface
         })
 
         const isBrowser = (typeof document !== 'undefined' && typeof window !== 'undefined')
+        const otherProps = others(new module.Props(), props)
 
         if (isBrowser && isCssAnimationSupported) {
             return React.createElement(
                 this.props.component,
-                props,
+                otherProps,
                 this.renderNumberElement()
             )
         }
 
         return React.createElement(
             this.props.component,
-            props,
+            otherProps,
             props['count']
         )
     }
