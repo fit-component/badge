@@ -1,5 +1,3 @@
-/// <reference path="../../../../../typings-module/rc-animate.d.ts" />
-
 import * as React from 'react'
 import * as Animate from 'rc-animate'
 import ScrollNumber from '../scroll-number'
